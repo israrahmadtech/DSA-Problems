@@ -1,4 +1,4 @@
-// ........................  Complexity: 0n*n  ...............................
+// ........................  Time Complexity: "0n*n", Space Complexity 0  ...............................
 // const nums = [2, 7, 11, 15]
 // const nums = [3,2,4]
 const nums = [3,3]
@@ -17,7 +17,7 @@ for(let i = 0; i < nums.length; i++){
 
 console.log(result);
 
-// ........................  Complexity: 0n  ...............................
+// ........................  Time Complexity: "0n", Space Complexity "0n"  ...............................
 const numbers = [2, 7, 11, 15]
 const target2 = 9
 const map = {}
@@ -34,7 +34,7 @@ for(let i = 0; i < numbers.length; i++){
 console.log(result2);
 
 
-// .............................. 100% optimized ....................
+// .............................. Time Complexity: "0n", Space Complexity "0n", 100% optimized ....................
 function twoSum(nums, target){
     const map = new Map()
     let complement;
