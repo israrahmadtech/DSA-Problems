@@ -79,3 +79,51 @@ var threeSumClosest = function (nums, target) {
     }
     return closestSum;
 }
+
+function practiceThreeSumClosest(nums, target) {
+    nums.sort((a, b) => a - b)
+    let n = nums.length - 1;
+    let closestSum = nums[0] + nums[1] + nums[2];
+    let sum;
+
+    for (let i = 0; i < n - 1; i++) {
+        if (i > 0 && nums[i] === nums[i - 1]) continue;
+
+        const minSum = nums[i] + nums[i + 1] + nums[i + 2];
+        if (minSum > target) {
+            if (Math.abs(minSum - target) < Math.abs(closestSum - target)) closestSum = minSum;
+            break;
+        }
+        const maxSum = nums[i] + nums[n - 1] + nums[n];
+        if (maxSum < target) {
+            if (Math.abs(maxSum - target) < Math.abs(closestSum - target)) closestSum = maxSum;
+            continue;
+        }
+
+        let j = i+1;
+        let k = n;
+        while(j < k){
+            sum = nums[i] + nums[j] + nums[k];
+            if(sum === target){
+                closestSum = sum;
+                break;
+            }
+            
+            if(Math.abs(sum - target) < Math.abs(closestSum - target)){
+                closestSum = sum;
+            }
+
+            if(sum > target) {
+                k--;
+                while(j < k && nums[k] === nums[k+1]) k--;
+            }
+            else {
+                j++;
+                while(j < k && nums[j] === nums[j-1]) j++;
+            }
+        }
+    }
+    return closestSum;
+}
+console.log(practiceThreeSumClosest([-1, 2, 1, -4], 1));
+console.log(practiceThreeSumClosest([0, 0, 0], 1));
